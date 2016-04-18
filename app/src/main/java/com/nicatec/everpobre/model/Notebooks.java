@@ -17,7 +17,7 @@ public class Notebooks {
         for (Notebook n: notebooks) {
             myNotebooks.add(n);
         }
-        
+
         return myNotebooks;
     }
 
@@ -26,7 +26,7 @@ public class Notebooks {
     }
 
     //lazygetter
-    public Notebooks getNotebooks() {
+    public List<Notebook> getNotebooks() {
         if ( this.notebooks == null) {
             this.notebooks = new LinkedList<>();
         }
