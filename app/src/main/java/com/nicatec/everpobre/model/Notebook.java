@@ -5,12 +5,20 @@ package com.nicatec.everpobre.model;
  */
 public class Notebook {
 
+    public static final String DEFAULT_NAME = "Notebook title";
     private int id;
     private String name;
 
     public Notebook(int id, String name) {
+
+        if ( name == null || name.isEmpty() ){
+            this.name = DEFAULT_NAME;
+        } else {
+            this.name = name;
+        }
+
         this.id = id;
-        this.name = name;
+
     }
 
     private  Notebook(){
@@ -32,4 +40,5 @@ public class Notebook {
     public void setName(String name) {
         this.name = name;
     }
+
 }
