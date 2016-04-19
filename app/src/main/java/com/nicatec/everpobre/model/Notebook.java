@@ -6,7 +6,7 @@ package com.nicatec.everpobre.model;
 public class Notebook {
 
     public static final String DEFAULT_NAME = "Notebook title";
-    private int id;
+    private long id;
     private String name;
 
     public Notebook(int id, String name) {
@@ -25,11 +25,11 @@ public class Notebook {
         //deshabilito el contructor  por defecto
     }
 
-    public int getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(long id) {
         this.id = id;
     }
 

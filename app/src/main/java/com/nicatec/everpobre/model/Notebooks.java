@@ -37,4 +37,16 @@ public class Notebooks {
     public void add(Notebook n) {
         getNotebooks().add(n);
     }
+
+    public int size(){
+        return getNotebooks().size();
+    }
+
+    public Notebook get(int index) {
+        return getNotebooks().get(index);
+    }
+
+    public void remove(Notebook notebook){
+        getNotebooks().remove(notebook);
+    }
 }
