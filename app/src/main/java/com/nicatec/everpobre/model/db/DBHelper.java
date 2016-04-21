@@ -1,5 +1,6 @@
 package com.nicatec.everpobre.model.db;
 
+import java.lang.ref.WeakReference;
 import java.util.Date;
 
 import android.content.Context;
@@ -7,31 +8,41 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
-import com.nicatec.everpobre.model.db.dao.NotebookDAO;
-
 
 public class DBHelper extends SQLiteOpenHelper {
 
 	public static final int DATABASE_VERSION = 1;
 
 	public static final String[] CREATE_DATABASE_SCRIPTS = {
-			NotebookDAO.SQL_CREATE_NOTEBOOK_TABLE
+			DBConstants.SQL_CREATE_NOTEBOOK_TABLE
 	};
 	
 	public static final String DROP_DATABASE = "";
+	public static final String DBNAME = "Everpobre.sqlite";
 
 	private static DBHelper sInstance;
+	private static String dbName;
+	private static WeakReference<Context> weakContext;
 	
 	private  DBHelper(String databaseName, Context context) {
 		super(context, databaseName, null, DATABASE_VERSION);
 	}
 
-	public static DBHelper getInstance(String databaseName, Context context) {
+	public static void configure(final String databaseName, final Context context) {
+		dbName = databaseName;
+		weakContext = new WeakReference<Context>(context);
+	}
+
+
+	public static DBHelper getInstance() {
+		if ( dbName == null || weakContext == null){
+			throw new IllegalStateException("No database name, no context");
+		}
 	    // Use the application context, which will ensure that you 
 	    // don't accidentally leak an Activity's context.
 	    // See this article for more information: http://bit.ly/6LRzfx
 	    if (sInstance == null) {
-	      sInstance = new DBHelper(databaseName, context.getApplicationContext());
+	      sInstance = new DBHelper(dbName, weakContext.get().getApplicationContext());
 	    }
 	    return sInstance;
 	 }

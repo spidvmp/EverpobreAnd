@@ -9,7 +9,7 @@ public class Notebook {
     private long id;
     private String name;
 
-    public Notebook(int id, String name) {
+    public Notebook(long id, String name) {
 
         if ( name == null || name.isEmpty() ){
             this.name = DEFAULT_NAME;
