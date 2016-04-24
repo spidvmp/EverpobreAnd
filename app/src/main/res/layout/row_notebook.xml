@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:gravity="center_horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="200dp">
+
+    <ImageView
+        tools:src="@android:drawable/ic_menu_edit"
+        android:id="@+id/row_notebook_icon"
+        android:layout_width="@dimen/notebook_icon_size"
+        android:layout_height="@dimen/notebook_icon_size"
+        />
+    <TextView
+        tools:text="@string/row_notebook_notebook_name_placeholder"
+        android:id="@+id/row_notebook_notebook_name"
+        android:layout_marginTop="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        style="@style/style_notebook_name" />
+</LinearLayout>
